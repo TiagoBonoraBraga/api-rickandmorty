@@ -25,12 +25,12 @@ const updateCharacterService = async (idParams, editCharacter) => {
 
 const deleteCharacterService = async (idParams) => {
   return await Characters.findByIdAndDelete(idParams);
-}
+};
 
 module.exports = {
   findAllCharactersServive,
   findByIdCharacterService,
   createCharacterService,
   updateCharacterService,
-  deleteCharacterService
+  deleteCharacterService,
 };
