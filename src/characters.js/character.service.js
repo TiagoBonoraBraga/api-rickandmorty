@@ -10,4 +10,27 @@ const findByIdCharacterService = async (idParams) => {
   return oneCharacter;
 };
 
-module.exports = { findAllCharactersServive, findByIdCharacterService };
+const createCharacterService = async (newCharacter) => {
+  const createdCharacter = await Characters.create(newCharacter);
+  return createdCharacter;
+};
+
+const updateCharacterService = async (idParams, editCharacter) => {
+  const updateCharacter = await Characters.findByIdAndUpdate(
+    idParams,
+    editCharacter,
+  ).setOptions({ returnOriginal: false });
+  return updateCharacter;
+};
+
+const deleteCharacterService = async (idParams) => {
+  return await Characters.findByIdAndDelete(idParams);
+}
+
+module.exports = {
+  findAllCharactersServive,
+  findByIdCharacterService,
+  createCharacterService,
+  updateCharacterService,
+  deleteCharacterService
+};
