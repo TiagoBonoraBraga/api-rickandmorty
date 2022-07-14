@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const routes = require('./characters/character.route');
 const connectToDatabase = require('./database/database');
-const userRoute = require('./users/user.route');
+const userRoute = require('./users/users.route');
 const authRoute = require('./auth/auth.controller');
 const swaggerRoute = require('./swagger/swagger.route')
 
