@@ -48,10 +48,36 @@ const deleteCharacterController = async (req, res) => {
   res.send({ message: 'Character deletado com sucesso!' });
 };
 
+const searchCharacterController = async (req, res) => {
+  try {
+    const { message } = req.body;
+    const characters = await characterService.searchCharacterService(message);
+
+    if (characters.length === 0) {
+      return res
+        .status(400)
+        .send({ message: 'Não exitem character com este nome!' });
+    }
+
+    return req.send({
+      characters: characters.map((character) => ({
+        id: character._id,
+        message: character.message,
+        name: character.user.name,
+        username: character.user.username,
+        avatar: character.user.avatar,
+      })),
+    });
+  } catch (err) {
+    res.status(500).send({ message: err.message });
+  }
+};
+
 module.exports = {
   findAllCharactersController,
   findByIdCharacterController,
   createCharacterController,
   updateCharacterController,
   deleteCharacterController,
+  searchCharacterController,
 };
