@@ -11,7 +11,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/characters",
+      "url": "http://localhost:3001",
       "description": "API de teste"
     },
     {
@@ -191,9 +191,116 @@
           }
         }
       }
+    },
+    "/users/create": {
+      "post":{
+        "summary":"Criar um novo usuário",
+        "description": "Rota responsável por criar um novo usuário",
+        "tags":["Users"],
+        "requestBody":{
+          "content":{
+            "application/json":{
+              "schema":{
+                "$ref":"#/components/schemas/User"
+              },
+              "examples":{
+                "Users": {
+                  "value":{
+                    "name": "cacau lima",
+                    "username": "cacode",
+                    "email":"ffff@gmail.com",
+                    "password": "12345",
+                    "avatar": "http://fff.com/fff.png"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses":{
+          "400":{
+            "description": "Not found"
+          },
+          "201":{
+            "description":"Created",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type":"object",
+                  "$ref":"#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "get":{
+        "summary": "Busca todos os usuários",
+        "description": "Rota responsável por buscar todos os usuário",
+        "tags":["Users"],
+        "responses":{
+          "400":{
+            "description":"Not found"
+          },
+          "200":{
+            "description":"Ok",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type":"array",
+                  "items":{
+                    "$ref":"#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post":{
+        "summary": "Entrar no rick and morty",
+        "description": "Rota responsável por fazer o login de um usuário cadastrado",
+        "tags":["Auth"],
+        "requestBody":{
+          "content":{
+            "application/json":{
+              "schema":{
+                "$ref":"#/components/schemas/User"
+              },
+              "examples":{
+                "User":{
+                  "value":{
+                    "email":"ffff@gmail.com",
+                    "password":"12345"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses":{
+          "400":{
+            "description":"Not Found"
+          },
+          "200":{
+            "description":"Ok"
+          }
+        }
+      }
     }
   },
   "components": {
+    "securitySchemes":{
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
     "schemas": {
       "Character": {
         "type": "object",
@@ -206,6 +313,26 @@
           },
           "imagem": {
             "type": "string"
+          }
+        }
+      },
+      "User": {
+        "type":"object",
+        "properties":{
+          "name": {
+            "type":"string"
+          },
+          "username": {
+            "type":"string"
+          },
+          "email": {
+            "type":"string"
+          },
+          "password": {
+            "type":"string"
+          },
+          "avatar": {
+            "type":"string"
           }
         }
       }
