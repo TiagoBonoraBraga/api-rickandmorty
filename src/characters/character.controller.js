@@ -48,36 +48,37 @@ const deleteCharacterController = async (req, res) => {
   res.send({ message: 'Character deletado com sucesso!' });
 };
 
-const searchCharacterController = async (req, res) => {
+const searchCharactersByNameController = async (req, res) => {
   try {
-    const { message } = req.body;
-    const characters = await characterService.searchCharacterService(message);
+    const query = req.query.name;
 
-    if (characters.length === 0) {
-      return res
-        .status(400)
-        .send({ message: 'Não exitem character com este nome!' });
+    if (!query) {
+      return res.status(400).send({ message: 'bad request' });
     }
 
-    return req.send({
-      characters: characters.map((character) => ({
+    const chosenCharacters = await searchCharactersByNameService(query);
+
+    if (!chosenCharacters) {
+      return res.status(404).send({ message: 'not found' });
+    }
+
+    res.send({
+      characters: chosenCharacters.map((character) => ({
         id: character._id,
-        message: character.message,
-        name: character.user.name,
-        username: character.user.username,
-        avatar: character.user.avatar,
+        name: character.name,
+        imagem: character.imagem,
+        user: character.user,
       })),
     });
   } catch (err) {
     res.status(500).send({ message: err.message });
   }
 };
-
 module.exports = {
   findAllCharactersController,
   findByIdCharacterController,
   createCharacterController,
   updateCharacterController,
   deleteCharacterController,
-  searchCharacterController,
+  searchCharactersByNameController,
 };

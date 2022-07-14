@@ -27,10 +27,8 @@ const deleteCharacterService = async (idParams) => {
   return await Characters.findByIdAndDelete(idParams);
 };
 
-const searchCharacterService = (message) =>
-  Characters.find({
-    message: { $regex: `${message || ''}`, $options: 'i' },
-  }).populate('user');
+const searchCharactersByNameService = async (query) =>
+  await Characters.find({ name: { $regex:` ${query || ''}`, $options: 'i' } });
 
 module.exports = {
   findAllCharactersServive,
@@ -38,5 +36,5 @@ module.exports = {
   createCharacterService,
   updateCharacterService,
   deleteCharacterService,
-  searchCharacterService,
+  searchCharactersByNameService,
 };
