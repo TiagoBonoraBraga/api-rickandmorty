@@ -1,0 +1,214 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Api Rick and Morty",
+    "description": "Api para crud de personagens",
+    "termsOfService": "",
+    "contact": {
+      "email": "ogait.desenvolvedor.jr@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/characters",
+      "description": "API de teste"
+    },
+    {
+      "url": "https://rickandmortybackend-api.herokuapp.com/characters",
+      "description": "API de produção"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Lista de todas os characters",
+        "description": "Rota responsável por listas todos os characters",
+        "tags": ["Characters"],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Characters"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/find/{id}": {
+      "get": {
+        "summary": "Lista um character pelo Id",
+        "description": "Rota responsável por buscar um character pelo ID",
+        "tags": ["Characters"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do character para busca",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Id inválido"
+          },
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Characters"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/create": {
+      "post": {
+        "summary": "Cadastrar um character",
+        "description": "Rota responsável por cadastrar um character",
+        "tags": ["Characters"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Characters"
+              },
+              "examples": {
+                "Character": {
+                  "value": {
+                    "user": "kkk",
+                    "nome": "Tião",
+                    "imagem": "./assets/imagens/tiao.png"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad request"
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Characters"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/update/{id}": {
+      "put": {
+        "summary": "Editar um character pelo Id",
+        "description": "Rota responsável por editar um paleta pelo Id",
+        "tags": ["Characters"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id da paletapara a busca",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Characters"
+              },
+              "examples": {
+                "Character": {
+                  "value": {
+                    "user": "tii",
+                    "nome": "Tião editado",
+                    "imagem": "./assets/imagens/tiaoeditado.png"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad request"
+          },
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Characters"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/delete/{id}": {
+      "delete": {
+        "summary": "Apagar um character pelo Id",
+        "description": "Rota responsável por apagar um character pelo Id",
+        "tags": ["Characters"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do character para deleção",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad request"
+          },
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Character": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "imagem": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
