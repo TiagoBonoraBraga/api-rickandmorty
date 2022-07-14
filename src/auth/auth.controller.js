@@ -1,3 +1,4 @@
+require('dotenv').config();
 const authService = require('./auth.service');
 const bcrypt = require('bcryptjs');
 
@@ -12,11 +13,13 @@ const loginController = async (req, res) => {
 
   const isPasswordValid = await bcrypt.compare(password, user.password);
 
-  if(!isPasswordValid){
-    return res.status(400).send({ message: "Senha inválida!"})
+  if (!isPasswordValid) {
+    return res.status(400).send({ message: 'Senha inválida!' });
   }
 
-  res.send(user);
+  const token = authService.generateToken(user.id); // vai retornar o id do usuario gerando o token
+
+  res.send({ token });
 };
 
 module.exports = loginController;

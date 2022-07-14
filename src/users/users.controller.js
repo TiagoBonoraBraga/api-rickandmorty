@@ -1,4 +1,5 @@
 const userService = require('./users.service');
+const authService = require('../auth/auth.service');
 
 //primeiro compara c estão tds os campos, c estiver correto vem para achar c já existe o user pelo foundUser
 // c não existir ele vai criar novo user
@@ -26,7 +27,18 @@ const createUserController = async (req, res) => {
     return res.status(400).send({ message: 'Erro ao criar usuário!' });
   }
 
-  res.status(201).send(user);
+  const token = authService.generateToken(user.id);
+
+  res.status(201).send({
+    user:{
+    id: user.id,
+    name,
+    username,
+    email,
+    avatar,    
+   },
+   token,
+  });
 };
 
 const findAllUserController = async (req, res) => {
