@@ -192,6 +192,43 @@
         }
       }
     },
+    "/search":{
+      "get":{
+        "summary": "Buscar usuarios cadastrados por nome",
+        "description": "Rota responsável por buscar usuario por nome",
+        "tags":["Characters"],
+        "security": [{"bearerAuth":[]}],
+        "parameters":[
+          {
+            "in": "query",
+            "name": "message",
+            "type":"string",
+            "required":true
+          }
+        ],
+        "responses":{
+          "401": {
+            "description": "unauthorized"
+          },
+          "400":{
+            "description": "Not Found"
+          },
+          "200":{
+            "description": "Ok",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type":"array",
+                  "items":{
+                    "$ref":"#/components/schemas/Characters"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/users/create": {
       "post":{
         "summary":"Criar um novo usuário",
