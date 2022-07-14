@@ -4,4 +4,10 @@ const findByEmailUserService = async (email) => User.findOne({ email: email });
 
 const createUserService = (body) => User.create(body);
 
-module.exports = { findByEmailUserService, createUserService };
+const findAllUserController = () => User.find();
+
+module.exports = {
+  findByEmailUserService,
+  createUserService,
+  findAllUserController,
+};
