@@ -94,7 +94,7 @@
                 "Character": {
                   "value": {
                     "user": "kkk",
-                    "nome": "Tião",
+                    "name": "Tião",
                     "imagem": "./assets/imagens/tiao.png"
                   }
                 }
@@ -143,7 +143,7 @@
                 "Character": {
                   "value": {
                     "user": "tii",
-                    "nome": "Tião editado",
+                    "name": "Tião editado",
                     "imagem": "./assets/imagens/tiaoeditado.png"
                   }
                 }
@@ -345,7 +345,7 @@
           "user": {
             "type": "string"
           },
-          "nome": {
+          "name": {
             "type": "string"
           },
           "imagem": {
