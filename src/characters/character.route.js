@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const controllerCharacter = require('./character.controller');
 const { validId, validObjectBody } = require('./character.middleware');
-const authMiddleware = require('./character.middleware');
+const authMiddleware = require('../auth/auth.middleware');
 
 router.get(
   '/',
