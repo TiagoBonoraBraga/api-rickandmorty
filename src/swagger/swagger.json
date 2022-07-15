@@ -36,7 +36,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Characters"
+                    "$ref": "#/components/schemas/Character"
                   }
                 }
               }
@@ -88,7 +88,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Characters"
+                "$ref": "#/components/schemas/Character"
               },
               "examples": {
                 "Character": {
@@ -112,7 +112,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "$ref": "#/components/schemas/Characters"
+                  "$ref": "#/components/schemas/Character"
                 }
               }
             }
@@ -137,7 +137,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Characters"
+                "$ref": "#/components/schemas/Character"
               },
               "examples": {
                 "Character": {
@@ -161,7 +161,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "$ref": "#/components/schemas/Characters"
+                  "$ref": "#/components/schemas/Character"
                 }
               }
             }
@@ -220,7 +220,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Characters"
+                    "$ref": "#/components/schemas/Character"
                   }
                 }
               }

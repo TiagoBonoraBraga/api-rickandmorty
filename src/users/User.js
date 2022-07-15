@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); //importando do mongoose
 const bcrypt = require('bcryptjs');
 
 const UserSchema = new mongoose.Schema({
@@ -29,6 +29,7 @@ const UserSchema = new mongoose.Schema({
 });
 
 UserSchema.pre('save', async function (next) {
+  //função do bcrypt antes d salvar faz a função d bcrypt (nao aceita arrowfunction)
   this.password = await bcrypt.hash(this.password, 10);
   next();
 });
