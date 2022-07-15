@@ -208,7 +208,7 @@
         ],
         "responses": {
           "401": {
-            "description": "unauthorized"
+            "description": "Unauthorized"
           },
           "400": {
             "description": "Not Found"
