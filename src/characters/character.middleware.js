@@ -10,7 +10,7 @@ const validId = (req, res, next) => {
 
 const validObjectBody = (req, res, next) => {
   const character = req.body;
-  if (!character.user || !character.nome || !character.imagem) {
+  if (!character.user || !character.name || !character.imagem) {
     return res
       .status(400)
       .send({ message: 'Envie envie todos os campos do character!' });

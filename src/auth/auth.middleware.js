@@ -20,9 +20,11 @@ module.exports = (req, res, next) => {
   if (!/^Bearer$/i.test(scheme)) {
     return res.status(401).send({ message: 'O token mal formatado!' });
   }
-console.log(token)
+
   jwt.verify(token, process.env.SECRET, async (err, decoded) => {
-    
+    if (err) {
+      return res.status(401).send({ message: 'erro!' });
+    }
     const user = await findByIdUserService(decoded.id);
 
     if (err || !user || !user.id) {
