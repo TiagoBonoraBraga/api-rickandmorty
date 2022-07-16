@@ -50,15 +50,12 @@ const deleteCharacterController = async (req, res) => {
 
 const searchCharactersByNameController = async (req, res) => {
   try {
-    const query = req.query.name;
+    const { name } = req.query;
 
-    if (!query) {
-      return res.status(400).send({ message: 'bad request' });
-    }
+    const chosenCharacters =
+      await characterService.searchCharactersByNameService(name);
 
-    const chosenCharacters = await searchCharactersByNameService(query);
-
-    if (!chosenCharacters) {
+    if (chosenCharacters === 0) {
       return res.status(404).send({ message: 'not found' });
     }
 
@@ -66,7 +63,7 @@ const searchCharactersByNameController = async (req, res) => {
       characters: chosenCharacters.map((character) => ({
         id: character._id,
         name: character.name,
-        image: character.imageUrl,
+        image: character.imagem,
         user: character.user,
       })),
     });
