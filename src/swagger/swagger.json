@@ -20,7 +20,7 @@
     }
   ],
   "paths": {
-    "/": {
+    "/characters/": {
       "get": {
         "summary": "Lista de todas os characters",
         "description": "Rota responsável por listas todos os characters",
@@ -46,7 +46,7 @@
         }
       }
     },
-    "/find/{id}": {
+    "/characters/find/{id}": {
       "get": {
         "summary": "Lista um character pelo Id",
         "description": "Rota responsável por buscar um character pelo ID",
@@ -81,7 +81,7 @@
         }
       }
     },
-    "/create": {
+    "/characters/create": {
       "post": {
         "summary": "Cadastrar um character",
         "description": "Rota responsável por cadastrar um character",
@@ -123,7 +123,7 @@
         }
       }
     },
-    "/update/{id}": {
+    "/characters/update/{id}": {
       "put": {
         "summary": "Editar um character pelo Id",
         "description": "Rota responsável por editar um paleta pelo Id",
@@ -173,7 +173,7 @@
         }
       }
     },
-    "/delete/{id}": {
+    "/characters/delete/{id}": {
       "delete": {
         "summary": "Apagar um character pelo Id",
         "description": "Rota responsável por apagar um character pelo Id",
@@ -197,7 +197,7 @@
         }
       }
     },
-    "/search": {
+    "/characters/search": {
       "get": {
         "summary": "Buscar usuarios cadastrados por nome",
         "description": "Rota responsável por buscar usuario por nome",
