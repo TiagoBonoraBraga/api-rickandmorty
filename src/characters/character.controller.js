@@ -39,7 +39,7 @@ const updateCharacterController = async (req, res) => {
     idParams,
     editCharacter,
   );
-  res.send({ message: 'Character atualizado com sucesso!',updateCharacter });
+  res.send({ message: 'Character atualizado com sucesso!', updateCharacter });
 };
 
 const deleteCharacterController = async (req, res) => {
@@ -66,7 +66,7 @@ const searchCharactersByNameController = async (req, res) => {
       characters: chosenCharacters.map((character) => ({
         id: character._id,
         name: character.name,
-        imagem: character.imagem,
+        image: character.imageUrl,
         user: character.user,
       })),
     });
@@ -74,6 +74,7 @@ const searchCharactersByNameController = async (req, res) => {
     res.status(500).send({ message: err.message });
   }
 };
+
 module.exports = {
   findAllCharactersController,
   findByIdCharacterController,

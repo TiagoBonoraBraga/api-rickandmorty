@@ -196,14 +196,19 @@
       "get": {
         "summary": "Buscar usuarios cadastrados por nome",
         "description": "Rota responsável por buscar usuario por nome",
+        "operationId": "searchCharactersByName",
         "tags": ["Characters"],
         "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
+            "name": "name",
             "in": "query",
-            "name": "message",
-            "type": "string",
-            "required": true
+            "required": true,
+            "description": "character name",
+            "schema": {
+              "type": "string",
+              "example": "Rick Sanchez"
+            }
           }
         ],
         "responses": {
