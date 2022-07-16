@@ -33,6 +33,6 @@ router.delete(
   validId,
   controllerCharacter.deleteCharacterController,
 );
-router.get('/search', controllerCharacter.searchCharactersByNameController);
+router.get('/search', authMiddleware, controllerCharacter.searchCharactersByNameController);
 
 module.exports = router;
