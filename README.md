@@ -7,5 +7,3 @@
 <p>Utilizar banco de dados atlasDb</p>
 <p>API documentada no swagger - https://rickandmortyapiblue.herokuapp.com/api-docs/</p>
 <p>Repositório GitHub - https://github.com/ogait-ashtar/api-rickandmorty.git</p>
-
-

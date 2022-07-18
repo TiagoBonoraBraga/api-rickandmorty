@@ -25,7 +25,7 @@
         "summary": "Lista de todas os characters",
         "description": "Rota responsável por listas todos os characters",
         "tags": ["Characters"],
-        "security": [{"bearerAuth":[]}],
+        "security": [{ "bearerAuth": [] }],
         "responses": {
           "404": {
             "description": "Not Found"
@@ -51,7 +51,7 @@
         "summary": "Lista um character pelo Id",
         "description": "Rota responsável por buscar um character pelo ID",
         "tags": ["Characters"],
-        "security": [{"bearerAuth":[]}],
+        "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
             "name": "id",
@@ -86,7 +86,7 @@
         "summary": "Cadastrar um character",
         "description": "Rota responsável por cadastrar um character",
         "tags": ["Characters"],
-        "security": [{"bearerAuth":[]}],
+        "security": [{ "bearerAuth": [] }],
         "requestBody": {
           "content": {
             "application/json": {
@@ -128,7 +128,7 @@
         "summary": "Editar um character pelo Id",
         "description": "Rota responsável por editar um paleta pelo Id",
         "tags": ["Characters"],
-        "security": [{"bearerAuth":[]}],
+        "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
             "name": "id",
@@ -178,7 +178,7 @@
         "summary": "Apagar um character pelo Id",
         "description": "Rota responsável por apagar um character pelo Id",
         "tags": ["Characters"],
-        "security": [{"bearerAuth":[]}],
+        "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
             "name": "id",
